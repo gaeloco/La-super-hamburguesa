@@ -1,0 +1,512 @@
+<html><head><base href="." /><title>Portafolio de física Gael Ivanov</title><style>
+:root {
+  --primary: #000000;
+  --accent: #00ff00;
+  --text: #00ff00;
+  --secondary: #003300;
+  --glass: rgba(0,255,0,0.05);
+}
+
+body {
+  margin: 0;
+  font-family: 'Source Code Pro', monospace;
+  background: var(--primary);
+  color: var(--text);
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 0, 0.03) 0,
+    rgba(0, 255, 0, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  animation: scan 10s linear infinite;
+}
+
+@keyframes scan {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100%; }
+}
+
+.header {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, rgba(0,255,0,0.1), rgba(0,51,0,0.3));
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 2px solid var(--accent);
+}
+
+.matrix-rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.header h1 {
+  font-size: 4rem;
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: 2px;
+  position: relative;
+  text-shadow: 0 0 10px var(--accent);
+  animation: glitch 5s infinite;
+}
+
+@keyframes glitch {
+  0% { text-shadow: 0 0 10px var(--accent); }
+  2% { transform: translate(-2px, 1px); text-shadow: 2px 0 10px var(--accent); }
+  4% { transform: translate(2px, -1px); text-shadow: -2px 0 10px var(--accent); }
+  6% { transform: translate(0); text-shadow: 0 0 10px var(--accent); }
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1.5rem;
+  background: rgba(0,255,0,0.05);
+  border: 1px solid var(--accent);
+  margin: 2rem auto;
+  width: fit-content;
+}
+
+.nav a {
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.4s;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+.nav a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.nav a:hover::before {
+  transform: scaleX(1);
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  padding: 4rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.project-card {
+  background: rgba(0,255,0,0.02);
+  border: 1px solid var(--accent);
+  padding: 2rem;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(0,255,0,0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.project-card:hover::before {
+  transform: translateX(100%);
+}
+
+.project-card h3 {
+  color: var(--accent);
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.skill-tag {
+  background: rgba(0,255,0,0.1);
+  color: var(--accent);
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: 1px solid var(--accent);
+}
+
+.contact {
+  text-align: center;
+  padding: 6rem 2rem;
+  background: linear-gradient(135deg, rgba(0,51,0,0.3), rgba(0,255,0,0.1));
+  border-top: 2px solid var(--accent);
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.social-links a {
+  color: var(--accent);
+  font-size: 1.75rem;
+  transition: all 0.3s;
+  padding: 1rem;
+  border: 1px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.social-links a:hover {
+  background: rgba(0,255,0,0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0,255,0,0.2);
+}
+
+.topics-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 2rem;
+  min-height: 500px;
+}
+
+.topics-list {
+  background: rgba(0,255,0,0.02);
+  border: 1px solid var(--accent);
+  padding: 1rem;
+  max-height: 80vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--primary);
+}
+
+.topics-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.topics-list::-webkit-scrollbar-track {
+  background: var(--primary);
+}
+
+.topics-list::-webkit-scrollbar-thumb {
+  background-color: var(--accent);
+  border-radius: 4px;
+}
+
+.topic-btn {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: left;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.topic-btn:hover {
+  background: rgba(0,255,0,0.1);
+  transform: translateX(5px);
+}
+
+.topic-btn.active {
+  background: rgba(0,255,0,0.2);
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(0,255,0,0.2);
+}
+
+.content-display {
+  background: rgba(0,255,0,0.02);
+  border: 1px solid var(--accent);
+  padding: 0;
+  position: relative;
+  min-height: 700px;
+  height: 80vh;
+}
+
+.content-display iframe {
+  width: 100%;
+  height: 100%;
+  background: white;
+}
+
+.content-display #initial-message {
+  padding: 2rem;
+  color: var(--accent);
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+  <canvas class="matrix-rain"></canvas>
+  <h1>Portafolio de física<br>Gael Ivanov</h1>
+  <nav class="nav">
+    <a href="#projects" onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })">Proyectos</a>
+    <a href="#topics" onclick="document.getElementById('topics').scrollIntoView({ behavior: 'smooth' })">Temas</a>
+    <a href="#contact" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Contacto</a>
+  </nav>
+</header>
+
+<section class="projects" id="projects">
+  <div class="project-card">
+    <h3>Física Cuántica</h3>
+    <p>Investigación sobre los principios fundamentales de la mecánica cuántica y sus aplicaciones.</p>
+    <div class="skills">
+      <span class="skill-tag">Mecánica Cuántica</span>
+      <span class="skill-tag">Modelado</span>
+      <span class="skill-tag">Análisis</span>
+    </div>
+  </div>
+  
+  <div class="project-card">
+    <h3>Termodinámica Avanzada</h3>
+    <p>Estudio de sistemas termodinámicos complejos y sus aplicaciones en la ingeniería.</p>
+    <div class="skills">
+      <span class="skill-tag">Termodinámica</span>
+      <span class="skill-tag">Simulación</span>
+      <span class="skill-tag">Análisis de Datos</span>
+    </div>
+  </div>
+  
+  <div class="project-card">
+    <h3>Física de Partículas</h3>
+    <p>Investigación sobre las partículas fundamentales y sus interacciones en el universo.</p>
+    <div class="skills">
+      <span class="skill-tag">Partículas</span>
+      <span class="skill-tag">Experimentación</span>
+      <span class="skill-tag">Teoría</span>
+    </div>
+  </div>
+</section>
+
+<section id="topics" class="topics-container">
+  <div class="topics-list">
+    <button class="topic-btn" data-topic="mecanica">Mecánica Clásica</button>
+    <button class="topic-btn" data-topic="cuantica">Mecánica Cuántica</button>
+    <button class="topic-btn" data-topic="termo">Termodinámica</button>
+    <button class="topic-btn" data-topic="electro">Electromagnetismo</button>
+    <button class="topic-btn" data-topic="relatividad">Relatividad</button>
+    <button class="topic-btn" data-topic="optica">Óptica</button>
+    <button class="topic-btn" data-topic="acustica">Acústica</button>
+    <button class="topic-btn" data-topic="fluidos">Mecánica de Fluidos</button>
+    <button class="topic-btn" data-topic="estadistica">Física Estadística</button>
+    <button class="topic-btn" data-topic="nuclear">Física Nuclear</button>
+    <button class="topic-btn" data-topic="particulas">Física de Partículas</button>
+    <button class="topic-btn" data-topic="astro">Astrofísica</button>
+    <button class="topic-btn" data-topic="cosmo">Cosmología</button>
+    <button class="topic-btn" data-topic="estado_solido">Física del Estado Sólido</button>
+    <button class="topic-btn" data-topic="plasma">Física del Plasma</button>
+    <button class="topic-btn" data-topic="molecular">Física Molecular</button>
+    <button class="topic-btn" data-topic="atomica">Física Atómica</button>
+    <button class="topic-btn" data-topic="gravitacion">Gravitación</button>
+    <button class="topic-btn" data-topic="ondas">Física de Ondas</button>
+    <button class="topic-btn" data-topic="semiconductores">Semiconductores</button>
+    <button class="topic-btn" data-topic="nanotecnologia">Nanotecnología</button>
+    <button class="topic-btn" data-topic="biofisica">Biofísica</button>
+    <button class="topic-btn" data-topic="computacional">Física Computacional</button>
+    <button class="topic-btn" data-topic="materiales">Ciencia de Materiales</button>
+    <button class="topic-btn" data-topic="cuerdas">Teoría de Cuerdas</button>
+  </div>
+  <div class="content-display">
+    <div id="initial-message" style="padding: 2rem; color: var(--accent);">
+      Selecciona un tema para ver su PDF...
+    </div>
+    <iframe id="pdf-viewer" src="" width="100%" height="100%" style="border: none; display: none;">
+      <p>Tu navegador no soporta iframes. Por favor, actualiza tu navegador.</p>
+    </iframe>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Conectémonos</h2>
+  <p>¿Interesado en colaborar en proyectos de física? ¡Contáctame!</p>
+  <div class="social-links">
+    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+  </div>
+</section>
+
+<script>
+// Matrix rain effect
+const canvas = document.querySelector('.matrix-rain');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()';
+const fontSize = 14;
+const columns = canvas.width/fontSize;
+const drops = [];
+
+for(let x = 0; x < columns; x++) {
+    drops[x] = 1;
+}
+
+function draw() {
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    ctx.fillStyle = '#0f0';
+    ctx.font = fontSize + 'px monospace';
+    
+    for(let i = 0; i < drops.length; i++) {
+        const text = characters.charAt(Math.floor(Math.random() * characters.length));
+        ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+        
+        if(drops[i]*fontSize > canvas.height && Math.random() > 0.975)
+            drops[i] = 0;
+        
+        drops[i]++;
+    }
+}
+
+setInterval(draw, 33);
+
+// Topic content handler
+const topicContent = {
+  mecanica: 'https://www.canva.com/design/DAGXYOwPac8/WNYUBDlo5kNQ0KEhTlb-og/edit?utm_content=DAGXYOwPac8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton',
+  cuantica: 'https://example.com/pdfs/mecanica-cuantica.pdf',
+  termo: 'https://example.com/pdfs/termodinamica.pdf',
+  electro: 'https://example.com/pdfs/electromagnetismo.pdf',
+  relatividad: 'https://example.com/pdfs/relatividad.pdf',
+  optica: 'https://example.com/pdfs/optica.pdf',
+  acustica: 'https://example.com/pdfs/acustica.pdf',
+  fluidos: 'https://example.com/pdfs/mecanica-fluidos.pdf',
+  estadistica: 'https://example.com/pdfs/fisica-estadistica.pdf',
+  nuclear: 'https://example.com/pdfs/fisica-nuclear.pdf',
+  particulas: 'https://example.com/pdfs/fisica-particulas.pdf',
+  astro: 'https://example.com/pdfs/astrofisica.pdf',
+  cosmo: 'https://example.com/pdfs/cosmologia.pdf',
+  estado_solido: 'https://example.com/pdfs/estado-solido.pdf',
+  plasma: 'https://example.com/pdfs/fisica-plasma.pdf',
+  molecular: 'https://example.com/pdfs/fisica-molecular.pdf',
+  atomica: 'https://example.com/pdfs/fisica-atomica.pdf',
+  gravitacion: 'https://example.com/pdfs/gravitacion.pdf',
+  ondas: 'https://example.com/pdfs/ondas.pdf',
+  semiconductores: 'https://example.com/pdfs/semiconductores.pdf',
+  nanotecnologia: 'https://example.com/pdfs/nanotecnologia.pdf',
+  biofisica: 'https://example.com/pdfs/biofisica.pdf',
+  computacional: 'https://example.com/pdfs/fisica-computacional.pdf',
+  materiales: 'https://example.com/pdfs/ciencia-materiales.pdf',
+  cuerdas: 'https://example.com/pdfs/teoria-cuerdas.pdf'
+};
+
+// Add event listeners for topic buttons
+document.querySelectorAll('.topic-btn').forEach(button => {
+  button.addEventListener('click', (e) => {
+    // Remove active class from all buttons
+    document.querySelectorAll('.topic-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    
+    // Add active class to clicked button
+    e.target.classList.add('active');
+    
+    // Hide initial message and show PDF viewer
+    document.getElementById('initial-message').style.display = 'none';
+    document.getElementById('pdf-viewer').style.display = 'block';
+    
+    // Update PDF viewer
+    const topic = e.target.dataset.topic;
+    const pdfViewer = document.getElementById('pdf-viewer');
+    pdfViewer.src = topicContent[topic];
+  });
+});
+
+// Project card hover effect
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const shine = `
+      radial-gradient(
+        circle at ${x}px ${y}px,
+        rgba(0,255,0,0.15),
+        rgba(0,255,0,0.05) 40%
+      )
+    `;
+    
+    card.style.background = shine;
+  });
+  
+  card.addEventListener('mouseleave', () => {
+    card.style.background = 'rgba(0,255,0,0.02)';
+  });
+});
+
+// Smooth scroll function
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const section = document.querySelector(this.getAttribute('href'));
+        if (section) {
+            section.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Resize handler for canvas
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+</script>
+</body></html>

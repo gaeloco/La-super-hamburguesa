@@ -1,89 +1,253 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Grid Food Menu</title>
-    <!--Google Font-->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <!--Stylesheet-->
-    <link rel="stylesheet" href="style.css">
+<html><head><base href="." /><title>Welcome - Physics Portfolio</title><style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      overflow: hidden;
+      font-family: 'Source Code Pro', monospace;
+      color: #0f0;
+    }
+
+    .container {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    #particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .title {
+      font-size: 4em;
+      text-align: center;
+      margin-bottom: 1em;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeUp 2s ease forwards, glowPulse 2s infinite;
+      text-shadow: 0 0 10px #0f0;
+    }
+
+    .enter-button {
+      padding: 1em 2em;
+      font-size: 1.2em;
+      background: transparent;
+      border: 2px solid #0f0;
+      color: #0f0;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: 'Source Code Pro', monospace;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeUp 2s ease 0.5s forwards, float 3s ease-in-out infinite;
+    }
+
+    .enter-button:hover {
+      background: rgba(0, 255, 0, 0.2);
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+      transform: scale(1.1);
+    }
+
+    .enter-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(0, 255, 0, 0.4),
+        transparent
+      );
+      transition: 0.5s;
+    }
+
+    .enter-button:hover::before {
+      left: 100%;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { text-shadow: 0 0 10px #0f0; }
+      50% { text-shadow: 0 0 20px #0f0, 0 0 30px #0f0; }
+    }
+
+    .dna-helix {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      opacity: 0.2;
+      animation: rotateHelix 30s linear infinite;
+    }
+
+    @keyframes rotateHelix {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .matrix-rain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="menu">
-        <div class="heading">
-            <h1>LA SUPER HAMBURGUESA</h1>
-            <h3>&mdash; MENU &mdash; </h3>
-        </div>
-        <div class="food-items">
-            <img src="burger.jpg">
-            <div class="details">
-                <div class="details-sub">
-                    <h5>Esto es una prueba</h5>
-                    <h5 class="price"> $8 </h5>
-                </div>
-                <p>Esto es una prueba</p>
-                <button>Esto es una prueba</button>
-            </div>
-        </div>
+  <canvas class="matrix-rain"></canvas>
+  <div class="container">
+    <svg class="dna-helix" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <path d="M50 0 Q75 25 50 50 Q25 75 50 100" stroke="#0f0" fill="none" stroke-width="0.5">
+        <animate attributeName="d" 
+          values="M50 0 Q75 25 50 50 Q25 75 50 100;
+                  M50 0 Q25 25 50 50 Q75 75 50 100;
+                  M50 0 Q75 25 50 50 Q25 75 50 100"
+          dur="10s" repeatCount="indefinite"/>
+      </path>
+      <path d="M50 0 Q25 25 50 50 Q75 75 50 100" stroke="#0f0" fill="none" stroke-width="0.5">
+        <animate attributeName="d" 
+          values="M50 0 Q25 25 50 50 Q75 75 50 100;
+                  M50 0 Q75 25 50 50 Q25 75 50 100;
+                  M50 0 Q25 25 50 50 Q75 75 50 100"
+          dur="10s" repeatCount="indefinite"/>
+      </path>
+    </svg>
+    <canvas id="particles"></canvas>
+    <h1 class="title">Bienvenido al<br>Mundo de la Física</h1>
+    <button class="enter-button" onclick="window.location.href='portafolio.html'">Entrar al Portafolio</button>
+  </div>
 
-        <div class="food-items">
-            <img src="burger.jpg">
-            <div class="details">
-                <div class="details-sub">
-                    <h5>Esto es una prueba</h5>
-                    <h5 class="price"> $15 </h5>
-                </div>
-                <p>Esto es una prueba</p>
-                <button>Esto es una prueba</button>
-            </div>
-        </div>
+  <script>
+    // Matrix rain animation
+    const matrixCanvas = document.querySelector('.matrix-rain');
+    const matrixCtx = matrixCanvas.getContext('2d');
 
-        <div class="food-items">
-            <img src="burger.jpg">
-            <div class="details">
-                <div class="details-sub">
-                    <h5>Esto es una prueba</h5>
-                    <h5 class="price"> $8 </h5>
-                </div>
-                <p>Esto es una prueba</p>
-                <button>Esto es una prueba</button>
-            </div>
-        </div>
+    matrixCanvas.width = window.innerWidth;
+    matrixCanvas.height = window.innerHeight;
 
-        <div class="food-items">
-            <img src="burger.jpg">
-            <div class="details">
-                <div class="details-sub">
-                    <h5>Esto es una prueba</h5>
-                    <h5 class="price"> $12 </h5>
-                </div>
-                <p>Esto es una prueba</p>
-                <button>Esto es una prueba</button>
-            </div>
-        </div>
+    const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%";
+    const drops = [];
+    const fontSize = 16;
+    const columns = matrixCanvas.width/fontSize;
 
-        <div class="food-items">
-            <img src="burger.jpg">
-            <div class="details">
-                <div class="details-sub">
-                    <h5>Esto es una prueba</h5>
-                    <h5 class="price"> $15 </h5>
-                </div>
-                <p>Esto es una prueba</p>
-                <button>Esto es una prueba</button>
-            </div>
-        </div>
+    for(let x = 0; x < columns; x++)
+        drops[x] = 1;
 
-        <div class="food-items">
-            <img src="burger.jpg">
-            <div class="details">
-                <div class="details-sub">
-                    <h5>Esto es una prueba</h5>
-                    <h5 class="price"> $10 </h5>
-                </div>
-                <p>Esto es una prueba</p>
-                <button>Esto es una prueba</button>
-            </div>
-        </div>
-    </div>
+    function drawMatrix() {
+        matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+        matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+
+        matrixCtx.fillStyle = '#0F0';
+        matrixCtx.font = fontSize + 'px monospace';
+
+        for(let i = 0; i < drops.length; i++) {
+            const text = matrix[Math.floor(Math.random()*matrix.length)];
+            matrixCtx.fillText(text, i*fontSize, drops[i]*fontSize);
+            
+            if(drops[i]*fontSize > matrixCanvas.height && Math.random() > 0.975)
+                drops[i] = 0;
+            drops[i]++;
+        }
+    }
+
+    setInterval(drawMatrix, 50);
+
+    // Particle animation
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const particleCount = 100;
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2;
+        this.speedX = Math.random() * 3 - 1.5;
+        this.speedY = Math.random() * 3 - 1.5;
+        this.alpha = Math.random();
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.alpha = Math.sin(Date.now() * 0.003) * 0.5 + 0.5;
+
+        if (this.x > canvas.width) this.x = 0;
+        if (this.x < 0) this.x = canvas.width;
+        if (this.y > canvas.height) this.y = 0;
+        if (this.y < 0) this.y = canvas.height;
+      }
+
+      draw() {
+        ctx.fillStyle = `rgba(0, 255, 0, ${this.alpha})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function init() {
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      matrixCanvas.width = window.innerWidth;
+      matrixCanvas.height = window.innerHeight;
+    });
+  </script>
 </body>
 </html>
